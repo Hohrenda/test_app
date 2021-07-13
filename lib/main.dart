@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter test app',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.purple,
       ),
       home: MyHomePage(title: 'Test App'),
     );
@@ -28,12 +28,12 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   Color _color = Colors.red;
-  Random rand = new Random();
+  Random _rand = new Random();
 
   void _changeColor() {
     setState(() {
       _color = Color.fromRGBO(
-          rand.nextInt(255), rand.nextInt(255), rand.nextInt(255), 1);
+          _rand.nextInt(256), _rand.nextInt(256), _rand.nextInt(256), _rand.nextDouble());
     });
   }
 
@@ -46,7 +46,11 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: InkWell(
           onTap: _changeColor,
-          child: Center(child: Text('Hey there'))),
+          child: Center(
+              child: Text(
+            'Hey there',
+            style: TextStyle(fontSize: 18),
+          ))),
     );
   }
 }
